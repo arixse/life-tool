@@ -1,6 +1,8 @@
 const inquirer = require("inquirer");
 const chalk = require("chalk").default;
 const osUtil = require("./os");
+const fs = require("fs");
+const path = require("path");
 let prompts = [
 	{
 		type: "list",
@@ -14,6 +16,16 @@ let prompts = [
 		]
 	}
 ];
+
+function generateTools() {
+	let tools = [];
+	let files = fs.readdirSync(__dirname);
+	files.forEach(file => {
+		if (/\.js$/.test(file) && file.indexOf("index") < 0) {
+			tools[file] = require(`./${file}`);
+		}
+	});
+}
 module.exports = function(options) {
 	inquirer.prompt(prompts).then(answers => {
 		if (answers.tools && answers.tools == "os") {
@@ -21,7 +33,7 @@ module.exports = function(options) {
 			console.log(chalk.cyan("当前系统版本为：" + osVersion));
 			console.log(chalk.cyan("当前系统剩余内存为：" + freeMem));
 		} else {
-            console.log(chalk.red('unknown choice'))
-        }
+			console.log(chalk.red("unknown choice"));
+		}
 	});
 };
