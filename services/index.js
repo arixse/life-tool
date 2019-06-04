@@ -3,6 +3,7 @@ const chalk = require("chalk").default;
 const osUtil = require("./os");
 const fs = require("fs");
 const path = require("path");
+const Table = require('cli-table')
 let prompts = [
 	{
 		type: "list",
@@ -22,16 +23,22 @@ function generateTools() {
 	let files = fs.readdirSync(__dirname);
 	files.forEach(file => {
 		if (/\.js$/.test(file) && file.indexOf("index") < 0) {
-			tools[file] = require(`./${file}`);
+			tools[file.replace(/\.js$/, "")] = require(`./${file}`);
 		}
 	});
+	return tools;
 }
+
 module.exports = function(options) {
 	inquirer.prompt(prompts).then(answers => {
-		if (answers.tools && answers.tools == "os") {
-			let { osVersion, freeMem ,totalMem} = osUtil();
-			console.log(chalk.cyan("当前系统版本为：" + osVersion));
-			console.log(chalk.cyan("当前系统剩余内存为：" + freeMem+'/'+totalMem));
+		let tools = generateTools();
+		let tool = tools[answers.tools];
+		if (tool) {
+			let { osVersion, freeMem, totalMem } = tool();
+			console.log('os:'+osVersion);
+			let table = new Table({head:["FreeMemory","TotalMemory"]})
+			table.push([freeMem,totalMem])
+			console.log(chalk.cyan(table.toString()));
 		} else {
 			console.log(chalk.red("unknown choice"));
 		}
