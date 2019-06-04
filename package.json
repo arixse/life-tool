@@ -1,0 +1,19 @@
+{
+  "name": "terminal-test",
+  "bin": {
+    "app":"index.js"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "description": "",
+  "devDependencies": {
+    "chalk": "^2.4.2",
+    "commander": "^2.20.0",
+    "inquirer": "^6.3.1"
+  }
+}
