@@ -1,9 +1,7 @@
 const inquirer = require("inquirer");
 const chalk = require("chalk").default;
-const osUtil = require("./os");
 const fs = require("fs");
-const path = require("path");
-const Table = require('cli-table')
+
 let prompts = [
 	{
 		type: "list",
@@ -13,6 +11,10 @@ let prompts = [
 			{
 				name: "系统检测",
 				value: "os"
+			},
+			{
+				name:"天气预报",
+				value:"weather"
 			}
 		]
 	}
@@ -34,11 +36,7 @@ module.exports = function(options) {
 		let tools = generateTools();
 		let tool = tools[answers.tools];
 		if (tool) {
-			let { osVersion, freeMem, totalMem } = tool();
-			console.log('os:'+osVersion);
-			let table = new Table({head:["FreeMemory","TotalMemory"]})
-			table.push([freeMem,totalMem])
-			console.log(chalk.cyan(table.toString()));
+			tool();
 		} else {
 			console.log(chalk.red("unknown choice"));
 		}
