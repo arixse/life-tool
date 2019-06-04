@@ -13,7 +13,6 @@ program
 	.on("--help", function() {
 		console.log("  Examples:");
 		console.log("");
-		console.log("$ app module moduleName");
-		console.log("$ app m moduleName");
+		console.log("$ life-tool");
 	})
 	.parse(process.argv);

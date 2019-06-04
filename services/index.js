@@ -18,8 +18,8 @@ module.exports = function(options) {
 	inquirer.prompt(prompts).then(answers => {
 		if (answers.tools && answers.tools == "os") {
 			let { osVersion, freeMem } = osUtil();
-			console.log(chalk.blueBright("当前系统版本为：" + osVersion));
-			console.log(chalk.blueBright("当前系统剩余内存为：" + freeMem));
+			console.log(chalk.cyan("当前系统版本为：" + osVersion));
+			console.log(chalk.cyan("当前系统剩余内存为：" + freeMem));
 		} else {
             console.log(chalk.red('unknown choice'))
         }
