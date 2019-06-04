@@ -1,7 +1,7 @@
 {
   "name": "terminal-test",
   "bin": {
-    "life-tool":"index.js"
+    "life-tool": "index.js"
   },
   "version": "1.0.0",
   "main": "index.js",
@@ -11,9 +11,19 @@
   },
   "author": "",
   "description": "",
-  "devDependencies": {
+  "dependencies": {
     "chalk": "^2.4.2",
+    "cli-table": "^0.3.1",
     "commander": "^2.20.0",
     "inquirer": "^6.3.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arixse/life-tool"
+  },
+  "bugs": {
+    "url": "https://github.com/arixse/life-tool/issues",
+    "email": "fusheng39@gmail.com"
+  },
+  "keywords": ["cli","node-cli","tool","life","life-tool"]
 }
