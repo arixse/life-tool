@@ -15,6 +15,10 @@ let prompts = [
 			{
 				name:"天气预报",
 				value:"weather"
+			},
+			{
+				name:"手机号归属地查询",
+				value:"cellphoneAttr"
 			}
 		]
 	}
