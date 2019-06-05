@@ -3,8 +3,7 @@ const chalk = require("chalk").default;
 const inquirer = require("inquirer");
 const api = require("../http/index");
 const clui = require("clui");
-const blessed = require("blessed");
-const contrib = require("blessed-contrib");
+
 const weatherQuestion = {
 	type: "input",
 	name: "city",
@@ -29,7 +28,12 @@ function weatherInput() {
 		]);
 		spinner.start();
 		api.fetchFiveDaysWeather(res.city).then(weathers => {
-			spinner.stop();
+            spinner.stop();
+            if(!weathers) {
+                console.log(chalk.redBright('无法查询到对应城市的天气情况，请换个城市试试'));
+                weatherInput();
+                return;
+            }
             let date = moment().format("YYYY-MM-DD :HH:mm:ss");
             console.log(chalk.bgCyan.white(`当前系统时间:`+date));
             weathers.forEach(item=>{
