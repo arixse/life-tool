@@ -37,7 +37,7 @@ function weatherInput() {
             let date = moment().format("YYYY-MM-DD :HH:mm:ss");
             console.log(chalk.bgCyan.white(`当前系统时间:`+date));
             weathers.forEach(item=>{
-                console.log(chalk.yellow(`${item.week}:${item.weather},${item.wind},${item.winp},${item.temp_low}℃  ~  ${item.temp_high}℃`))
+                console.log(chalk.cyan.underline(`${item.week}:${item.weather},${item.wind},${item.winp},${item.temp_low}℃  ~  ${item.temp_high}℃`))
             })
 		});
 	});
