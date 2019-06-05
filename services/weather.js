@@ -1,6 +1,5 @@
 const moment = require('moment')
 const chalk = require("chalk").default;
-const Table = require('cli-table');
 const inquirer = require("inquirer");
 const api = require('../http/index');
 const weatherQuestion = {
