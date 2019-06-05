@@ -1,6 +1,5 @@
 #! /usr/bin/env node
 const program = require("commander");
-const inquirer = require("inquirer");
 const chalk = require("chalk").default;
 const services = require('./services/index')
 program
