@@ -1,6 +1,5 @@
 const moment = require('moment')
 const chalk = require("chalk").default;
-const axios = require('axios').default;
 const Table = require('cli-table');
 const inquirer = require("inquirer");
 const api = require('../http/index');
@@ -11,13 +10,15 @@ const weatherQuestion = {
 }
 function weatherInput() {
     inquirer.prompt([weatherQuestion]).then(res=>{
+        if(!res.city){
+            console.log(chalk.red('城市名称错误，请重新输入'));
+            weatherInput();
+            return;
+        }
         console.log(chalk.cyanBright('正在查询中...'));
         api.fetchFiveDaysWeather(res.city).then(weathers=>{
             let date = moment().format("YYYY-MM-DD :HH:mm:ss");
             console.log(weathers);
-        }).catch(reason=>{
-            console.log(chalk.red(reason));
-            weatherInput();
         })
     })
 }

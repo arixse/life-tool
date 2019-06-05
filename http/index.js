@@ -1,10 +1,10 @@
+const axios = require('axios').default;
 
 module.exports = {
     /**
      * 获取近五天天气预报
      */
     fetchFiveDaysWeather(city) {
-        if(!city) return Promise.reject('请输入城市名称');
         return axios({
             url:`http://api.k780.com/?app=weather.future&weaid=${city}&&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json`,
             method:'GET'
