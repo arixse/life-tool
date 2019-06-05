@@ -9,5 +9,5 @@ module.exports = function() {
 	let usedMem = (totalMem-freeMem).toFixed(2);
 	console.log(chalk.green("当前系统版本:" + osVersion));
 	console.log(chalk.cyan('系统内存使用情况:'))
-	console.log(chalk.cyan(Gauge(usedMem,totalMem,30,totalMem*0.8,usedMem+'GB')))
+	console.log(chalk.cyan(Gauge(usedMem,totalMem,30,totalMem*0.8,usedMem+'GB'+'/'+totalMem+'GB')))
 };
