@@ -1,5 +1,5 @@
 {
-  "name": "terminal-test",
+  "name": "life-tool",
   "bin": {
     "life-tool": "index.js"
   },
